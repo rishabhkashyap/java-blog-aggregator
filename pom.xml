@@ -7,6 +7,7 @@
   <properties>
 		<java-version>1.8</java-version>
 		<org.springframework-version>4.1.0.RELEASE</org.springframework-version>
+		<apache.tiles>3.0.5</apache.tiles>
 		<org.springframework.security-version>3.2.0.RELEASE</org.springframework.security-version>
 		<org.aspectj-version>1.8.1</org.aspectj-version>
 		<org.slf4j-version>1.6.1</org.slf4j-version>
@@ -188,6 +189,16 @@
 			<version>1.3</version>
 			<scope>test</scope>
 		</dependency>
+  		<dependency>
+  			<groupId>org.apache.tiles</groupId>
+  			<artifactId>tiles-core</artifactId>
+  			<version>${apache.tiles}</version>
+  		</dependency>
+  		<dependency>
+  			<groupId>org.apache.tiles</groupId>
+  			<artifactId>tiles-jsp</artifactId>
+  			<version>${apache.tiles}</version>
+  		</dependency>
 	</dependencies>
   <build>
     <sourceDirectory>src</sourceDirectory>
