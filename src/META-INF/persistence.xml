@@ -4,6 +4,7 @@
 		<class>com.blog.entity.User</class>
 		<class>com.blog.entity.Role</class>
 		<class>com.blog.entity.Blog</class>
+		<class>com.blog.entity.Item</class>
 	
 	</persistence-unit>
 </persistence>
