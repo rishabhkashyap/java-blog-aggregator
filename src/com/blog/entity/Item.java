@@ -1,6 +1,6 @@
 package com.blog.entity;
 
-import java.time.LocalDate;
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -22,7 +22,7 @@ public class Item {
 	private String description;
 	
 	@Column(name="published_date")
-	private LocalDate  datePublish;
+	private Date  datePublish;
 	
 	private String link;
 	
@@ -54,11 +54,11 @@ public class Item {
 		this.description = description;
 	}
 
-	public LocalDate getDatePublish() {
+	public Date getDatePublish() {
 		return datePublish;
 	}
 
-	public void setDatePublish(LocalDate datePublish) {
+	public void setDatePublish(Date datePublish) {
 		this.datePublish = datePublish;
 	}
 

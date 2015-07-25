@@ -11,7 +11,13 @@
 		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.8.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
-	<context:component-scan base-package="com.blog.controller">
+	<context:component-scan base-package="com.blog">
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller"></context:exclude-filter>
+	</context:component-scan>
+	
+	
+	<context:component-scan base-package="com.blog.service">
 		<context:exclude-filter type="annotation"
 			expression="org.springframework.stereotype.Controller"></context:exclude-filter>
 	</context:component-scan>
@@ -37,5 +43,5 @@
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
-	<jpa:repositories base-package="com.blog.repository"></jpa:repositories>
+	<jpa:repositories base-package="com.blog.repository"/>
 </beans>
