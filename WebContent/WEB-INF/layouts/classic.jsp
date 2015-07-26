@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles-extras" prefix="tilesx" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,8 +29,8 @@
 <title><tiles:getAsString name="title"></tiles:getAsString></title>
 </head>
 <body>
-	<div class="container">
-		<tiles:insertAttribute name="body"></tiles:insertAttribute>
+<tilesx:useAttribute name="current"/>
+	<div class="container">		
 		<br /> <br />
 		<!-- Static navbar -->
 		<nav class="navbar navbar-default">
@@ -46,8 +47,8 @@
 				</div>
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href='<spring:url value="/" />'>Home</a></li>
-						<li><a href="#">About</a></li>
+						<li class="${current== 'index' ? 'active' : '' }"><a href='<spring:url value="/" />'>Home</a></li>
+						<li class="${current== 'users'? 'active ': '' }"><a href='<spring:url value="/users" />'>Users</a></li>
 						<li><a href="#">Contact</a></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -73,8 +74,9 @@
 			</div>
 			<!--/.container-fluid -->
 		</nav>
+	<tiles:insertAttribute name="body"></tiles:insertAttribute> 
 
-
+	
 
 		<br /> <br /> <br /> <br />
 		<center>

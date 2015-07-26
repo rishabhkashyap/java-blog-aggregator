@@ -8,6 +8,6 @@
 </head>
 <body>
 
-	Hello World from spring
+	
 </body>
 </html>
