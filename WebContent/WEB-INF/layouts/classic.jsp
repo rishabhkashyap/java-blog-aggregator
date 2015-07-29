@@ -1,8 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8" 
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
-<%@ taglib uri="http://tiles.apache.org/tags-tiles-extras" prefix="tilesx" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles-extras"
+	prefix="tilesx"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +14,7 @@
 <script src="js/bootstrap.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
+	
 </script>
 <link href="navbar.css" rel="stylesheet">
 <!-- Latest compiled and minified CSS -->
@@ -29,8 +31,8 @@
 <title><tiles:getAsString name="title"></tiles:getAsString></title>
 </head>
 <body>
-<tilesx:useAttribute name="current"/>
-	<div class="container">		
+	<tilesx:useAttribute name="current" />
+	<div class="container">
 		<br /> <br />
 		<!-- Static navbar -->
 		<nav class="navbar navbar-default">
@@ -47,9 +49,16 @@
 				</div>
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li class="${current== 'index' ? 'active' : '' }"><a href='<spring:url value="/" />'>Home</a></li>
-						<li class="${current== 'users'? 'active ': '' }"><a href='<spring:url value="/users" />'>Users</a></li>
-						<li><a href="#">Contact</a></li>
+						<li class="${current== 'index' ? 'active' : '' }"><a
+							href='<spring:url value="/" />'>Home</a></li>
+						<li class="${current== 'users'? 'active ': '' }"><a
+							href='<spring:url value="/users" />'>Users</a></li>													
+						<li class="${current== 'register'? 'active ': '' }"><a
+							href='<spring:url value="/register"/>'>Register</a></li>
+							<li class="${current== 'login'? 'active ': '' }"><a
+							href='<spring:url value="/login"/>'>Login</a></li>
+						<li class="${current== 'logout'? 'active ': '' }"><a
+							href='<spring:url value="/logout"/>'>Logout</a></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-haspopup="true"
 							aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -63,20 +72,14 @@
 								<li><a href="#">One more separated link</a></li>
 							</ul></li>
 					</ul>
-					<ul class="nav navbar-nav navbar-right">
-						<li class="active"><a href="./">Default <span
-								class="sr-only">(current)</span></a></li>
-						<li><a href="../navbar-static-top/">Static top</a></li>
-						<li><a href="../navbar-fixed-top/">Fixed top</a></li>
-					</ul>
 				</div>
 				<!--/.nav-collapse -->
 			</div>
 			<!--/.container-fluid -->
 		</nav>
-	<tiles:insertAttribute name="body"></tiles:insertAttribute> 
+		<tiles:insertAttribute name="body"></tiles:insertAttribute>
 
-	
+
 
 		<br /> <br /> <br /> <br />
 		<center>

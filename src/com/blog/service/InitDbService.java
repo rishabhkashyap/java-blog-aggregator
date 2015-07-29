@@ -115,14 +115,15 @@ public class InitDbService {
 		item1.setTitle("First");
 		item1.setLink("http://www.javavids.com");
 		item1.setDatePublish(new Date());
+		itemRepository.save(item1);
 		
 		Item item2=new Item();
 		item2.setLink("http://www.javavids.com");
 		item2.setBlog(javavids);
-		item2.setTitle("First");
+		item2.setTitle("Second");
 		item2.setLink("http://www.javavids.com");
 		item2.setDatePublish(new Date());
-		
+		itemRepository.save(item2);
 		
 
 	}
