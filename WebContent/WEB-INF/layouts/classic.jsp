@@ -47,7 +47,7 @@
 					</button>
 					<a class="navbar-brand" href='<spring:url value="/" />'>JBA</a>
 				</div>
-				<div id="navbar" class="navbar-collapse collapse">
+
 					<ul class="nav navbar-nav">
 						<li class="${current== 'index' ? 'active' : '' }"><a
 							href='<spring:url value="/" />'>Home</a></li>

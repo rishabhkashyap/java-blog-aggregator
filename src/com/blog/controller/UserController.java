@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,10 +30,10 @@ public class UserController {
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
-	
+
 	@ModelAttribute("user")
-	public User constructUser(){
-		return new User(); 
+	public User constructUser() {
+		return new User();
 	}
 
 	/**
@@ -44,7 +45,7 @@ public class UserController {
 	 */
 	@RequestMapping("/users")
 	public String getUsers(Model model) {
-		List<User> users = userService.findAll();		
+		List<User> users = userService.findAll();
 		model.addAttribute("users", users);
 		return "users";
 
@@ -58,24 +59,23 @@ public class UserController {
 	 * @return Return name of jsp page as string
 	 */
 	@RequestMapping("/users/{id}")
-	public String getUsersById(Model model, @PathVariable int id) {	
-		User user=userService.findOneWithBlogs(id);
+	public String getUsersById(Model model, @PathVariable int id) {
+		User user = userService.findOneWithBlogs(id);
 		model.addAttribute("user", user);
 		return "user-detail";
 	}
-	
-	//Controller to register new user
-	
+
+	// Controller to register new user
+
 	@RequestMapping("/register")
-	public String registerNewUser(Model model){
-		return "user-register";
-	}
-	
-	//To register user
-	@RequestMapping(value="/register", method=RequestMethod.POST)
-	public  String doRegister(@ModelAttribute("user") User user){
-		userService.save(user);
+	public String registerNewUser(Model model) {
 		return "user-register";
 	}
 
+	// To register user
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public String doRegister(@ModelAttribute("user") User user) {
+		userService.save(user);
+		return "user-register";
+	}
 }

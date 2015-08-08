@@ -10,6 +10,7 @@
 </head>
 <body>
 	<h1>${user.name}</h1>
+<<<<<<< HEAD
 	<div class="row">
 		<div class="col-xs-4">
 			<c:forEach items="${user.blogs}" var="blog">
@@ -40,5 +41,7 @@
 	</div>
 
 
+=======
+>>>>>>> refs/remotes/origin/master
 </body>
 </html>
