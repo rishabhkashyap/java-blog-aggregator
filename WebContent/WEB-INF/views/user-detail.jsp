@@ -9,10 +9,15 @@
 <title></title>
 </head>
 <body>
-	<h1>${user.name}</h1>
-<<<<<<< HEAD
 	<div class="row">
-		<div class="col-xs-4">
+		<div class="col-xs-5">
+		<div class="col-xs-4"></div>
+			<h1>${user.name}</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-1"></div>
+		<div class="col-xs-3">
 			<c:forEach items="${user.blogs}" var="blog">
 				<h1>${blog.name}</h1>
 				<p>${blog.url}</p>
@@ -35,13 +40,10 @@
 						</tbody>
 					</table>
 				</center>
-
 			</c:forEach>
+
 		</div>
 	</div>
 
-
-=======
->>>>>>> refs/remotes/origin/master
 </body>
 </html>
