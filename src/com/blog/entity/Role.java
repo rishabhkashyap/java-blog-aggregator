@@ -14,7 +14,7 @@ public class Role {
 	private Integer id;
 
 	private String name;
-	@ManyToMany
+	@ManyToMany(mappedBy="roles")
 	private List<User> users;
 
 	// Getter and setter

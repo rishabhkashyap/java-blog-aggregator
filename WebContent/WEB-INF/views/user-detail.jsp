@@ -10,9 +10,9 @@
 </head>
 <body>
 	<div class="row">
-		<div class="col-xs-5">
-		<div class="col-xs-4"></div>
-			<h1>${user.name}</h1>
+		<div class="col-xs-1">
+		<div class="col-xs-3"></div>
+			<h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${user.name}</h1>
 		</div>
 	</div>
 	<div class="row">

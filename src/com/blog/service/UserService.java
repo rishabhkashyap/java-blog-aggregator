@@ -3,20 +3,23 @@
  */
 package com.blog.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.blog.entity.Blog;
 import com.blog.entity.Item;
+import com.blog.entity.Role;
 import com.blog.entity.User;
 import com.blog.repository.BlogRepository;
 import com.blog.repository.ItemRepository;
+import com.blog.repository.RoleRepository;
 import com.blog.repository.UserRepository;
 
 @Transactional
@@ -26,6 +29,7 @@ public class UserService {
 	private UserRepository userRepository;
 	private BlogRepository blogRepository;
 	private ItemRepository itemRepository;
+	private RoleRepository roleRepository;
 
 	// Getters and setters
 	public UserRepository getUserRepository() {
@@ -45,6 +49,11 @@ public class UserService {
 	@Autowired
 	public void setUserRepository(UserRepository userRepository) {
 		this.userRepository = userRepository;
+	}
+	
+	@Autowired
+	public void setRoleRepository(RoleRepository roleRepository) {
+		this.roleRepository = roleRepository;
 	}
 
 	/**
@@ -82,6 +91,12 @@ public class UserService {
 	}
 
 	public void save(User user) {
+		user.setEnabled(true);
+		BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
+		user.setPassword(encoder.encode(user.getPassword()));
+		List<Role>roles=new ArrayList<>();
+		roles.add(roleRepository.findByName("ROLE_USER"));
+		user.setRoles(roles);
 		userRepository.save(user);
 
 	}

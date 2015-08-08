@@ -51,17 +51,18 @@
 
 
 
-<form class="form-signin" action='<spring:url value="/login"/>' method="post">
+<form class="form-signin" action='<spring:url value="/j_spring_security_check"/>' method="post">
 	<center>
 		<h2 class="form-signin-heading">Please sign in</h2>
+		<br/>
 	</center>
 
 	<label for="Username" class="sr-only">Username</label> 
-	<input type="text" name="username" class="form-control"
+	<input type="text" name="j_username" class="form-control"
 	placeholder="User name" required  autofocus/> 
 	<label for="inputPassword" class="sr-only">Password</label> 
 	<input
-		type="password" name="password" class="form-control"
+		type="password" name="j_password" class="form-control"
 		placeholder="Password" required autofocus/> 
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	<button class="btn btn-lg btn-primary btn-block" type="submit">Sign

@@ -4,6 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles-extras"
 	prefix="tilesx"%>
+	<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,16 +50,17 @@
 				</div>
 
 					<ul class="nav navbar-nav">
-						<li class="${current== 'index' ? 'active' : '' }"><a
-							href='<spring:url value="/" />'>Home</a></li>
-						<li class="${current== 'users'? 'active ': '' }"><a
-							href='<spring:url value="/users" />'>Users</a></li>													
-						<li class="${current== 'register'? 'active ': '' }"><a
-							href='<spring:url value="/register"/>'>Register</a></li>
-							<li class="${current== 'login'? 'active ': '' }"><a
-							href='<spring:url value="/login"/>'>Login</a></li>
-						<li class="${current== 'logout'? 'active ': '' }"><a
-							href='<spring:url value="/logout"/>'>Logout</a></li>
+						<li class="${current== 'index' ? 'active' : '' }"><a href='<spring:url value="/" />'>Home</a></li>
+						<security:authorize access="hasRole('ROLE_ADMIN')">
+							<li class="${current== 'users'? 'active ': '' }"><a href='<spring:url value="/users" />'>Users</a></li>
+						</security:authorize>																									
+						<security:authorize access="!isAuthenticated()">
+							<li class="${current== 'login'? 'active ': '' }"><a href='<spring:url value="/login"/>'>Login</a></li>
+							<li class="${current== 'register'? 'active ': '' }"><a href='<spring:url value="/register"/>'>Register</a></li>
+						</security:authorize>
+						<security:authorize access="isAuthenticated()">
+							<li class="${current== 'logout'? 'active': '' }"><a href='<spring:url value="/logout"/>'>Logout</a></li>
+						</security:authorize>						
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-haspopup="true"
 							aria-expanded="false">Dropdown <span class="caret"></span></a>
