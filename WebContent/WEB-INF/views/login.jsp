@@ -5,8 +5,6 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <style>
-
-
 .form-signin {
 	max-width: 330px;
 	padding: 15px;
@@ -50,21 +48,21 @@
 
 
 
+	<form class="form-signin"
+		action='<spring:url value="/j_spring_security_check"/>' method="post">
+		<center>
+			<h2 class="form-signin-heading">Please sign in</h2>
+			<br />
+		</center>
 
-<form class="form-signin" action='<spring:url value="/j_spring_security_check"/>' method="post">
-	<center>
-		<h2 class="form-signin-heading">Please sign in</h2>
-		<br/>
-	</center>
+		<label for="Username" class="sr-only">Username</label> <input
+			type="text" name="j_username" class="form-control"
+			placeholder="User name" required autofocus /> <label
+			for="inputPassword" class="sr-only">Password</label> <input
+			type="password" name="j_password" class="form-control"
+			placeholder="Password" required autofocus /> <input type="hidden"
+			name="${_csrf.parameterName}" value="${_csrf.token}" />
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
+			in</button>
+	</form>
 
-	<label for="Username" class="sr-only">Username</label> 
-	<input type="text" name="j_username" class="form-control"
-	placeholder="User name" required  autofocus/> 
-	<label for="inputPassword" class="sr-only">Password</label> 
-	<input
-		type="password" name="j_password" class="form-control"
-		placeholder="Password" required autofocus/> 
-	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-	<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
-		in</button>
-</form>

@@ -14,11 +14,11 @@ public class LoginController {
 	}
 	
 	//Logout 
-//	@RequestMapping(value="/logout", method=RequestMethod.GET)
-//	public String doLogout(Model model){
-//		
-//		return "logout";
-//		
-//	}
+	@RequestMapping(value="/logout", method=RequestMethod.GET)
+	public String doLogout(Model model){
+		
+		return "login";
+		
+	}
 
 }
