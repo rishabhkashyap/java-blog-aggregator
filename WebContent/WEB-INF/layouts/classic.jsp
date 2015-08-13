@@ -66,6 +66,8 @@
 					<security:authorize access="isAuthenticated()">
 						<li class="${current== 'logout'? 'active': '' }"><a
 							href='<spring:url value="/logout"/>'>Logout</a></li>
+						<li class="${current== 'account'? 'active': '' }"><a
+							href='<spring:url value="/account"/>'>Account</a></li>	
 					</security:authorize>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"

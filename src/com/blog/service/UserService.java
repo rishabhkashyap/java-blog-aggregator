@@ -101,4 +101,10 @@ public class UserService {
 
 	}
 
+	public User findOneWithBlogs(String name) {
+		// TODO Auto-generated method stub
+		User user=userRepository.findByName(name);
+		return findOneWithBlogs(user.getId());
+	}
+
 }
