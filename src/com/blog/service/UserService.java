@@ -107,4 +107,10 @@ public class UserService {
 		return findOneWithBlogs(user.getId());
 	}
 
+	//Deletes user
+	public void delete(int id) {
+		userRepository.delete(id);
+		
+	}
+
 }

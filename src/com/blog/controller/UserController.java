@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.blog.entity.Blog;
 import com.blog.entity.User;
+import com.blog.service.BlogService;
 import com.blog.service.UserService;
 
 /**
@@ -25,27 +26,37 @@ import com.blog.service.UserService;
 @Controller
 public class UserController {
 	private UserService userService;
+	private BlogService blogService;
 
 	// Setter method for userService
 	@Autowired
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
-//Mwthod to bind user entity
+
+	@Autowired
+	public void setBlogService(BlogService blogService) {
+		this.blogService = blogService;
+	}
+
+	// Method to bind user entity
 	@ModelAttribute("user")
 	public User constructUser() {
 		return new User();
 	}
-//Method to bind blog entity
+
+	// Method to bind blog entity
 	@ModelAttribute("blog")
-	public  Blog constructBlog(){
+	public Blog constructBlog() {
 		return new Blog();
 	}
+
 	/**
 	 * Handles request from user page
 	 * 
 	 * @param model
 	 *            use it to display details
+	 * 
 	 * @return name of jsp page
 	 */
 	@RequestMapping("/users")
@@ -83,11 +94,46 @@ public class UserController {
 		userService.save(user);
 		return "redirect:/register?success=true";
 	}
-	
+
 	@RequestMapping("/account")
-	public String showAccount(Model model, Principal principal){
-		String name=principal.getName();
-		model.addAttribute("user",userService.findOneWithBlogs(name));
-		return"user-detail";
+	public String showAccount(Model model, Principal principal,
+			@ModelAttribute("user") User user) {
+		String name = principal.getName();
+		model.addAttribute("user", userService.findOneWithBlogs(name));
+		return "user-detail";
 	}
+
+	@RequestMapping(value = "/account", method = RequestMethod.POST)
+	public String doAddBlog(@ModelAttribute("blog") Blog blog,
+			Principal principal, @ModelAttribute("user") User user) {
+		String name = principal.getName();
+		blogService.save(blog, name);
+
+		return "redirect:/account";
+	}
+	// @RequestMapping("/")
+	// public String getIndex(@ModelAttribute("user") User user){
+	// return "index";
+	// }
+
+	
+	// Handles request to remove a blog
+	// It redirects to page where user can delete blogs
+	
+	@RequestMapping("/blog/remove/{id}")
+	public String removeBlog(@PathVariable int id){
+		blogService.delete(id);
+		return "redirect:/account";
+		
+		
+	}
+	
+	//Handles request to delete user 
+	
+	@RequestMapping("/user/remove/{id}")
+	public String removeUser(@PathVariable int id){
+		userService.delete(id);
+		return "redirect:/users";
+	}
+	
 }

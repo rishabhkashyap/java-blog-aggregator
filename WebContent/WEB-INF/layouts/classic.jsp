@@ -64,23 +64,29 @@
 							href='<spring:url value="/register"/>'>Register</a></li>
 					</security:authorize>
 					<security:authorize access="isAuthenticated()">
-						<li class="${current== 'logout'? 'active': '' }"><a
-							href='<spring:url value="/logout"/>'>Logout</a></li>
+<%-- 						<li class="${current== 'logout'? 'active': '' }"><a --%>
+<%-- 							href='<spring:url value="/logout"/>'>Logout</a></li> --%>
 						<li class="${current== 'account'? 'active': '' }"><a
-							href='<spring:url value="/account"/>'>Account</a></li>	
+							href='<spring:url value="/account"/>'>Account</a></li>
+
 					</security:authorize>
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">Dropdown <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Another action</a></li>
-							<li><a href="#">Something else here</a></li>
-							<li role="separator" class="divider"></li>
-							<li class="dropdown-header">Nav header</li>
-							<li><a href="#">Separated link</a></li>
-							<li><a href="#">One more separated link</a></li>
-						</ul></li>
+					<security:authorize access="isAuthenticated()">
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown" role="button" aria-haspopup="true"
+							aria-expanded="false"> Hi <security:authentication property="principal.username" /><span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li class="${current== 'logout'? 'active': '' }"><a
+							   	 href='<spring:url value="/logout"/>'>Logout</a>
+							    </li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li role="separator" class="divider"></li>
+								<li class="dropdown-header">Nav header</li>
+								<li><a href="#">Separated link</a></li>
+								<li><a href="#">One more separated link</a></li>
+							</ul></li>
+					</security:authorize>
+
 				</ul>
 			</div>
 			<!--/.nav-collapse -->

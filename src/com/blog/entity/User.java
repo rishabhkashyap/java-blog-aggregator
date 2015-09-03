@@ -3,6 +3,7 @@ package com.blog.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -18,6 +19,9 @@ public class User {
 	@GeneratedValue
 	private Integer id;
 	
+	
+//	private String firstName;
+//	private String lastName;
 	private String name;
 	
 	private String email;
@@ -29,7 +33,7 @@ public class User {
 	@JoinTable
 	private List<Role> roles;
 	
-	@OneToMany(mappedBy="user", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="user", fetch=FetchType.EAGER,cascade=CascadeType.REMOVE)
 	private List<Blog> blogs;
 	
 
@@ -90,6 +94,22 @@ public class User {
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
+
+//	public String getFirstNmae() {
+//		return firstName;
+//	}
+//
+//	public void setFirstName(String firstName) {
+//		this.firstName = firstName;
+//	}
+//
+//	public String getLastName() {
+//		return lastName;
+//	}
+//
+//	public void setLastName(String lastName) {
+//		this.lastName = lastName;
+//	}
 	
 	
 	

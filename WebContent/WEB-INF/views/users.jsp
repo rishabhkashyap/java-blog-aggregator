@@ -16,12 +16,13 @@
 </head>
 <body>
 	<div class="row">
-	<div class="col-xs-4"></div>
+		<div class="col-xs-4"></div>
 		<div class="col-xs-4">
 			<table class="table table-bordered table-hover table-striped">
 				<thead>
 					<tr>
 						<th>User name</th>
+						<th>Remove User</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -29,6 +30,8 @@
 						<tr>
 							<td><a href="<spring:url value="/users/${user.id}"/>">
 									${user.name} </a></td>
+							<td><a href="<spring:url value="/user/remove/${user.id}"/>"
+								class="btn btn-danger"> Remove </a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
