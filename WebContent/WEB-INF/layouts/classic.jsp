@@ -16,6 +16,8 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
 </script>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js">
+</script>
 
 <link href="navbar.css" type="text/css rel="stylesheet">
 <!-- Latest compiled and minified CSS -->
@@ -66,7 +68,7 @@
 <%-- 						<li class="${current== 'logout'? 'active': '' }"><a --%>
 <%-- 							href='<spring:url value="/logout"/>'>Logout</a></li> --%>
 						<li class="${current== 'account'? 'active': '' }"><a
-							href='<spring:url value="/account"/>'>Account</a></li>
+							href='<spring:url value="/account"/>'>My Account</a></li>
 
 					</security:authorize>
 					<security:authorize access="isAuthenticated()">

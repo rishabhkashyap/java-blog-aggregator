@@ -9,7 +9,7 @@
 	<br />
 	<br />
 
-	<form:form commandName="user" cssClass="form-horizontal">
+	<form:form commandName="user" cssClass="form-horizontal registrationForm">
 		<c:if test="${param.success eq true}">
 			
 				<div class="row">
@@ -29,7 +29,8 @@
 			<label for="name" class="col-sm-5 control-label">Name</label>
 			<div class="col-sm-3">
 				<form:input path="name" cssClass="form-control"
-					placeholder="User name" aria-describedby="name" />
+					placeholder="User name" aria-describedby="name"   />
+					<form:errors path="name"/>
 			</div>
 
 		</div>
@@ -38,6 +39,7 @@
 			<label for="email" class="col-sm-5 control-label">Email</label>
 			<div class="col-sm-3">
 				<form:input path="email" cssClass="form-control" placeholder="Email" />
+					<form:errors path="email"/>
 			</div>
 		</div>
 		<div class="form-group">
@@ -45,6 +47,13 @@
 			<div class="col-sm-3">
 				<form:password path="password" cssClass="form-control"
 					placeholder="Password" />
+						<form:errors path="password"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="password" class="col-sm-5 control-label"> Confirm Password</label>
+			<div class="col-sm-3">
+				<input type= "password"  name="password_again" id="password_again" Class="form-control" placeholder="Confirm Password" />						
 			</div>
 		</div>
 		<div class="form-group">
@@ -59,3 +68,41 @@
 	</form:form>
 	
 </center>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.registrationForm').validate(
+				{
+					rules: {
+						name	:{
+							required: true,
+							minlength:3
+						},
+						email:{
+							required: true,
+							email:true
+						},
+						password:{
+							required: true,
+							minlength:5
+						},
+						password_again:{
+							equalTo:"#password"
+						}
+						
+							
+						
+					},
+					highlight: function(element){
+						$(element).closest('.form-group') .removeClass('has-success') .addClass('has-error');
+					},
+					
+					unhighlight:function(element){
+						$(element).closest('.form-group') .removeClass('has-error') .addClass('has-success');
+					}
+				
+				}
+			
+		);
+		
+	});
+</script>

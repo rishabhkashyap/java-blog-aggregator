@@ -21,6 +21,12 @@
 		<put-attribute name="body" value="/WEB-INF/views/user-detail.jsp" />
 		<put-attribute name="current" value="users" />
 	</definition>
+	
+	<definition name="account" extends="common">
+		<put-attribute name="title" value=" My Account" />
+		<put-attribute name="body" value="/WEB-INF/views/user-account.jsp" />
+		<put-attribute name="current" value="account" />
+	</definition>
 	<definition name="login" extends="common">
 		<put-attribute name="title" value="Login" />
 		<put-attribute name="body" value="/WEB-INF/views/login.jsp" />
